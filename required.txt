@@ -1,0 +1,18 @@
+Running scripts 1-4 requires the file names corresponding to each script.
+Script #5 creates the file with the users, but you will need to copy the contents.
+
+1. Random_Password_AD.ps1 
+.\user_ad.txt
+
+2. Enable_AD.ps1
+.\enable_ad.txt
+
+3. Disable_AD.txt
+.\disabled_ad.txt
+
+4. Create_AD.ps1
+.\user_add_ad.txt
+
+Creating files
+5. Export_AD.txt 
+.\user.txt
