@@ -1,0 +1,10 @@
+# .gitignore
+proxmox_url          = "https://proxmox-server:8006/api2/json"
+proxmox_api_token    = "your-proxmox-api-token"
+proxmox_api_token_id = "root@pam!terraform-token"
+proxmox_node         = "proxmox-node"
+proxmox_network_bridge = "vmbr0"
+dns_server           = "192.168.1.1"
+domain_name          = "egale.lan"
+domain_controller_ip = "192.168.1.2"
+admin_password       = "ChangeMe123!"

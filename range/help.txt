@@ -1,0 +1,7 @@
+Install / Enable WINRM
+https://www.pdq.com/blog/how-to-enable-winrm-window-remote-management/
+
+Open PowerShell as admin
+
+Command 
+ WinRM quickconfig
