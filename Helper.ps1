@@ -6,6 +6,10 @@ $cred = New-Object System.Management.Automation.PSCredential ($username, $passwo
 # List of remote computers
 $computers = @("Server1", "Server2", "Server3")
 
+# File details
+$sourceURL = "https://example.com/file.exe"  # Replace with the actual URL
+$destinationPath = "C:\Temp\file.exe"
+
 # Store sessions
 $sessions = @()
 
@@ -20,15 +24,21 @@ foreach ($computer in $computers) {
     }
 }
 
-# Run custom commands on all sessions
+# Run commands on all sessions
 if ($sessions.Count -gt 0) {
-    $result = Invoke-Command -Session $sessions -ScriptBlock {
-        # Your custom command here
-        Get-Process | Select-Object -First 5
-    }
-    
-    # Display result
-    $result
+    Invoke-Command -Session $sessions -ScriptBlock {
+        param ($sourceURL, $destinationPath)
+
+        # Ensure Temp directory exists
+        if (!(Test-Path "C:\Temp")) { New-Item -ItemType Directory -Path "C:\Temp" }
+
+        # Download the file
+        Invoke-WebRequest -Uri $sourceURL -OutFile $destinationPath
+
+        # Execute the file
+        Start-Process -FilePath $destinationPath -Wait -PassThru
+
+    } -ArgumentList $sourceURL, $destinationPath
 }
 
 # Cleanup - Remove PSSessions
